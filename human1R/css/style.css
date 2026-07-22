@@ -1,0 +1,366 @@
+/* الإعدادات العامة للموقع والخطوط */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal', sans-serif;
+  scroll-behavior: smooth;
+  /* سلاسة الانتقال بين الأقسام */
+}
+
+:root {
+  --primary-color: #2E7D32;
+  /* الأخضر الممثل للنمو والأمل والجمعية */
+  --secondary-color: #E65100;
+  /* البرتقالي الملفت لزر ساهم معنا والتنبيهات */
+  --dark-color: #263238;
+  --light-bg: #f7f9fa;
+  --white: #ffffff;
+  --transition: all 0.3s ease-in-out;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--dark-color);
+  line-height: 1.8;
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* شريط التنقل الثابت */
+.main-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 15px 0;
+  backdrop-filter: blur(10px);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h2 {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--dark-color);
+}
+
+.logo h2 span {
+  color: var(--primary-color);
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-color);
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+/* زر ساهم معنا الآن */
+.btn-donate {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(230, 81, 0, 0.3);
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.btn-donate:hover {
+  background-color: #bf4300;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(230, 81, 0, 0.4);
+}
+
+/* العناوين المشتركة للأقسام */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 2.3rem;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.section-title p {
+  color: #777;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+/* قسم من نحن */
+.about-section {
+  padding: 140px 0 80px 0;
+  /* مساحة علوية لعدم تغطيتها بالشريط الثابت */
+  background-color: var(--white);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #555;
+}
+
+/* قسم الأعضاء وتأثير سكرول التيك توك (التمرير الأفقي) */
+.members-section {
+  padding: 80px 0;
+  background-color: var(--light-bg);
+}
+
+.members-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 10px;
+  /* لتفعيل خاصية الالتقاط الأفقي الشبيهة بالتيك توك */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  /* إخفاء جزئي لشريط السكرول التقليدي في فايرفوكس */
+}
+
+/* إخفاء شريط السكرول في المتصفحات الأخرى لمظهر أنيق */
+.members-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.members-carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.member-card {
+  flex: 0 0 calc(33.333% - 14px);
+  /* يظهر 3 كروت على الشاشات الكبيرة */
+  background-color: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  scroll-snap-align: start;
+  /* محاذاة الكرت عند السحب */
+  transition: var(--transition);
+}
+
+@media (max-width: 992px) {
+  .member-card {
+    flex: 0 0 calc(50% - 10px);
+    /* يظهر كارتين على التابلت */
+  }
+}
+
+@media (max-width: 600px) {
+  .member-card {
+    flex: 0 0 100%;
+    /* كرت واحد كامل مثل شاشة التيك توك تماماً للتحريك يميناً ويساراً */
+  }
+}
+
+.member-image {
+  width: 100%;
+  height: 320px;
+  background-color: #eaeaea;
+  /* خلفية مؤقتة للصورة */
+  position: relative;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.member-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.member-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.member-info p {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* قسم المشاريع (الشبكة والتأثيرات الحركية) */
+.projects-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border: 1px solid #f0f0f0;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.project-img {
+  height: 220px;
+  background-color: #eaeaea;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.08);
+  /* تأثير التكبير الأنيق عند المرور بالماوس */
+}
+
+/* شارات المشاريع */
+.tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.tag-emergency {
+  background-color: #d32f2f;
+}
+
+.tag-culture {
+  background-color: var(--primary-color);
+}
+
+.tag-edu {
+  background-color: #0288d1;
+}
+
+.project-body {
+  padding: 25px;
+}
+
+.project-body h3 {
+  font-size: 1.3rem;
+  color: var(--dark-color);
+  margin-bottom: 12px;
+}
+
+.project-body p {
+  color: #666;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+/* زر السكرول للأعلى (Scroll to Top) */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  /* ليتناسب مع اتجاه القراءة العربي في اليمين */
+  background-color: var(--primary-color);
+  color: var(--white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+  z-index: 999;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+/* الاستجابة للهواتف لشريط التنقل */
+@media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .nav-links ul {
+    gap: 15px;
+  }
+
+  .about-section {
+    padding: 200px 0 60px 0;
+    /* مساحة أكبر للهاتف */
+  }
+}

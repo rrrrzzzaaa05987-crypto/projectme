@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريعنا | جمعية العطاء</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Cairo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --sand: #F6F0E4;
+            --sand-deep: #EEE3CC;
+            --ink: #26241F;
+            --olive: #435A3C;
+            --olive-dark: #2E4029;
+            --clay: #A23E34;
+            --clay-dark: #7E2F28;
+            --gold: #C7963A;
+            --cream: #FBF8F1;
+            --shadow: rgba(38, 36, 31, .12);
+            --font-display: 'Rakkas', 'Cairo', serif;
+            --font-body: 'Cairo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--sand);
+            color: var(--ink);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+        }
+
+        .tatreez-divider {
+            height: 14px;
+            width: 100%;
+            background-image:
+                linear-gradient(135deg, var(--clay) 25%, transparent 25%),
+                linear-gradient(225deg, var(--clay) 25%, transparent 25%),
+                linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+                linear-gradient(315deg, var(--gold) 25%, transparent 25%);
+            background-position: 0 0, 7px 0, 0 0, 7px 0;
+            background-size: 14px 14px;
+            background-repeat: repeat-x;
+            opacity: .85;
+        }
+
+        /* ============ الهيدر ============ */
+        header.site-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: .85rem 5%;
+            background: rgba(246, 240, 228, .9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(38, 36, 31, .08);
+            transition: box-shadow .3s ease, padding .3s ease;
+        }
+
+        header.site-header.scrolled {
+            box-shadow: 0 6px 24px var(--shadow);
+            padding: .55rem 5%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--olive-dark);
+            white-space: nowrap;
+        }
+
+        .brand .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--clay), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-size: 1rem;
+        }
+
+        nav.main-nav {
+            display: flex;
+            align-items: center;
+            gap: 2.1rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        nav.main-nav a {
+            position: relative;
+            font-weight: 600;
+            font-size: .98rem;
+            color: var(--ink);
+            padding: .3rem 0;
+            transition: color .25s;
+        }
+
+        nav.main-nav a::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--clay);
+            transition: width .3s ease;
+        }
+
+        nav.main-nav a:hover {
+            color: var(--clay-dark);
+        }
+
+        nav.main-nav a:hover::after {
+            width: 100%;
+        }
+
+        nav.main-nav a.active {
+            color: var(--clay-dark);
+        }
+
+        nav.main-nav a.active::after {
+            width: 100%;
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, var(--clay), var(--clay-dark));
+            color: var(--cream);
+            padding: .68rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .95rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            box-shadow: 0 6px 16px rgba(162, 62, 52, .35);
+            white-space: nowrap;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(162, 62, 52, .45);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.4rem;
+            color: var(--olive-dark);
+            background: none;
+        }
+
+        /* ============ عنوان الصفحة ============ */
+        .page-hero {
+            padding: 9rem 5% 4rem;
+            text-align: center;
+            background:
+                radial-gradient(circle at 85% 15%, rgba(199, 150, 58, .18), transparent 45%),
+                radial-gradient(circle at 10% 90%, rgba(67, 90, 60, .15), transparent 40%);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(67, 90, 60, .1);
+            color: var(--olive-dark);
+            font-weight: 700;
+            font-size: .85rem;
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+        }
+
+        .eyebrow i {
+            color: var(--gold);
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.1rem, 3.6vw, 3rem);
+            color: var(--olive-dark);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            max-width: 620px;
+            margin: 0 auto;
+            color: #4A473F;
+            font-size: 1.05rem;
+        }
+
+        /* ============ تبويبات الفلترة ============ */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: .8rem;
+            flex-wrap: wrap;
+            padding: 0 5% 3rem;
+        }
+
+        .filter-btn {
+            background: var(--cream);
+            color: var(--olive-dark);
+            font-weight: 700;
+            font-size: .92rem;
+            padding: .6rem 1.4rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px var(--shadow);
+            transition: all .25s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--clay);
+            color: var(--cream);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ============ الأقسام والمجموعات ============ */
+        .section {
+            padding: 1rem 5% 5.5rem;
+        }
+
+        .projects-group {
+            margin-bottom: 4.5rem;
+        }
+
+        .group-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .group-label span {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--clay-dark);
+            white-space: nowrap;
+        }
+
+        .group-label::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to left, var(--clay), transparent);
+        }
+
+        .group-label.before span {
+            color: var(--olive-dark);
+        }
+
+        .group-label.before::after {
+            background: linear-gradient(to left, var(--olive), transparent);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: var(--cream);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 26px var(--shadow);
+            transition: transform .35s ease, box-shadow .35s ease, opacity .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .project-card.hidden-card {
+            display: none;
+        }
+
+        .project-card .project-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--sand-deep);
+        }
+
+        .project-card .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card .project-body {
+            padding: 1.4rem;
+        }
+
+        .project-card .icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: rgba(162, 62, 52, .12);
+            color: var(--clay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .projects-group.before .icon-badge {
+            background: rgba(67, 90, 60, .12);
+            color: var(--olive);
+        }
+
+        .project-card h3 {
+            font-size: 1.15rem;
+            color: var(--olive-dark);
+            margin-bottom: .5rem;
+        }
+
+        .project-card p {
+            font-size: .93rem;
+            color: #5B5849;
+        }
+
+        .project-card .stat {
+            display: inline-block;
+            margin-top: .8rem;
+            font-weight: 700;
+            font-size: .85rem;
+            color: var(--clay-dark);
+            background: rgba(199, 150, 58, .15);
+            padding: .3rem .8rem;
+            border-radius: 50px;
+        }
+
+        /* ============ التذييل ============ */
+        footer {
+            background: var(--olive-dark);
+            color: var(--cream);
+            padding: 3.5rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        footer h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p,
+        footer a {
+            color: rgba(251, 248, 241, .8);
+            font-size: .92rem;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: .7rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(251, 248, 241, .15);
+            font-size: .85rem;
+            color: rgba(251, 248, 241, .6);
+        }
+
+        /* ============ زر العودة للأعلى ============ */
+        .to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--clay);
+            color: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 24px rgba(162, 62, 52, .4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all .35s ease;
+            z-index: 900;
+        }
+
+        .to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .to-top:hover {
+            background: var(--clay-dark);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav.main-nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: min(78vw, 320px);
+                background: var(--cream);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transform: translateX(100%);
+                transition: transform .35s ease;
+                box-shadow: -10px 0 30px var(--shadow);
+            }
+
+            nav.main-nav.open {
+                transform: translateX(0);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .page-hero {
+                padding-top: 7.5rem;
+            }
+        }
+
+        @media (max-width:520px) {
+            .to-top {
+                left: 1rem;
+                bottom: 1rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ الهيدر ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="brand">
+            <span class="brand-mark"><i class="fa-solid fa-hand-holding-heart"></i></span>
+            <span>جمعية التغريد</span>
+        </div>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="in1.html">الرئيسية</a>
+            <a href="About_Us.html">من نحن</a>
+            <a href="in1.html#team">أعضاء الجمعية</a>
+            <a href="pro.html" class="active">مشاريعنا</a>
+            <li><a href="in1.html#tenders">العطاءات والمناقصات</a></li>
+            <a href="contact-us.html">اتصل بنا</a>
+        </nav>
+
+        <a href="index.html#contact" class="btn-donate">
+            <i class="fa-solid fa-heart"></i>
+            ساهم معنا الآن
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ عنوان الصفحة ============ -->
+    <section class="page-hero">
+        <span class="eyebrow reveal"><i class="fa-solid fa-diagram-project"></i> أثرنا الميداني</span>
+        <h1 class="reveal">مشاريعنا</h1>
+        <p class="reveal">
+            من العمل الإنساني والنفسي خلال الحرب، إلى صون التراث والهوية والتنمية المجتمعية قبلها.
+            كل مشروع أثر حقيقي في حياة أهلنا في غزة.
+        </p>
+    </section>
+
+    <!-- ============ تبويبات الفلترة ============ -->
+    <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">جميع المشاريع</button>
+        <button class="filter-btn" data-filter="during">خلال الحرب</button>
+        <button class="filter-btn" data-filter="before">قبل الحرب</button>
+    </div>
+
+    <!-- ============ الأقسام ============ -->
+    <section class="section">
+
+        <!-- مجموعة: خلال الحرب -->
+        <div class="projects-group during reveal" data-group="during">
+            <div class="group-label">
+                <span>خلال الحرب</span>
+            </div>
+
+            <div class="project-grid">
+
+                <!-- تكية طعام -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/تكية.jpg" alt="تكية الطعام في مواصي خانيونس">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-bowl-food"></i></div>
+                        <h3>تكية طعام في مواصي خانيونس</h3>
+                        <p>أقامت الجمعية تكية طعام لخدمة النازحين في مواصي خانيونس، استفاد منها عدد كبير من العائلات
+                            خلال فترة العدوان على قطاع غزة منذ بدايته.</p>
+                    </div>
+                </div>
+
+                <!-- طرود غذائية -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/eee.jpg" alt="توزيع طرود غذائية">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-box-open"></i></div>
+                        <h3>توزيع طرود غذائية</h3>
+                        <p>وزّعت الجمعية طرودًا غذائية على العائلات المتضررة والنازحة في مختلف مناطق القطاع لتخفيف أثر
+                            الحرب عليهم.</p>
+                        <span class="stat">+5,000 مستفيد</span>
+                    </div>
+                </div>
+
+                <!-- مياه الشرب -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/ميا.jpg" alt="توزيع مياه صالحة للشرب">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-droplet"></i></div>
+                        <h3>توزيع مياه صالحة للشرب</h3>
+                        <p>في ظل أزمة المياه الحادة، عملت الجمعية على توفير وتوزيع مياه صالحة للشرب على الأهالي في مناطق
+                            النزوح.</p>
+                        <span class="stat">+10,000 لتر</span>
+                    </div>
+                </div>
+
+                <!-- الدعم النفسي والإرشادي -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/المرا.jpg" alt="جلسات الدعم النفسي والإرشادي">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h3>الدعم النفسي والإرشادي</h3>
+                        <p>نظّمت الجمعية جلسات دعم نفسي وإرشادي جماعية وفردية للأطفال والنساء لمساعدتهم على التعامل مع
+                            صدمات الحرب والنزوح المتكرر.</p>
+                    </div>
+                </div>
+
+                <!-- التعليم في النزوح -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/انشطة.jpg" alt="خيام التعليم في مناطق النزوح">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <h3>خيام التعليم والدعم النفسي للأطفال</h3>
+                        <p>أنشأت الجمعية مساحات تعليمية مؤقتة داخل مناطق النزوح لتمكين الأطفال من متابعة التعلّم وسط
+                            الظروف الاستثنائية للحرب.</p>
+                    </div>
+                </div>
+
+                <!-- الإغاثة الشتوية -->
+                <div class="project-card" data-cat="during">
+                    <div class="project-img">
+                        <img src="images/شتاءء.jpg" alt="توزيع مستلزمات شتوية">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-mound"></i></div>
+                        <h3>الإغاثة الشتوية</h3>
+                        <p>وزّعت الجمعية بطانيات وملابس شتوية وخيامًا مقوّاة على العائلات النازحة لمواجهة برد الشتاء
+                            القاسي في المخيمات.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- مجموعة: قبل الحرب -->
+        <div class="projects-group before reveal" data-group="before">
+            <div class="group-label before">
+                <span>قبل الحرب</span>
+            </div>
+
+            <div class="project-grid">
+
+                <!-- الدبكة والتراث -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/دبكة.jpg" alt="تعليم فنون الدبكة والتراث الشعبي">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-music"></i></div>
+                        <h3>تعليم فنون الدبكة والتراث الشعبي</h3>
+                        <p>قبل الحرب، كانت الجمعية تُعلّم الأطفال والشباب فنون الدبكة الفلسطينية والتراث الشعبي، حفاظًا
+                            على الهوية الوطنية ونقلها للأجيال القادمة.</p>
+                    </div>
+                </div>
+
+                <!-- روضة أطفال -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/ش.jpg" alt="روضة أطفال الجمعية">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-child-reaching"></i></div>
+                        <h3>روضة للأطفال</h3>
+                        <p>ضمّت الجمعية روضة للأطفال قدّمت بيئة تعليمية وترفيهية آمنة، ساهمت في دعم الأسر وتنمية الأطفال
+                            في مراحلهم الأولى.</p>
+                    </div>
+                </div>
+
+                <!-- تدريب مهني -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/IMG_٢٠٢٦٠٦١٣_٢٠٥٠٤٩.jpg" alt="دورات تدريب مهني للشباب">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h3>دورات تدريب مهني للشباب</h3>
+                        <p>قدّمت الجمعية دورات تدريبية في مهن مختلفة لتأهيل الشباب وتحسين فرصهم في سوق العمل داخل
+                            القطاع.</p>
+                    </div>
+                </div>
+
+                <!-- ورشات الحرف التراثية -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/تغيرر.jpg" alt="ورشات التطريز والحرف التراثية">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>ورشات التطريز والحرف التراثية</h3>
+                        <p>نظّمت الجمعية ورشات لتعليم التطريز الفلسطيني (التطريز) والحرف اليدوية التراثية للنساء
+                            والفتيات، لدعمهنّ اقتصاديًا وثقافيًا.</p>
+                    </div>
+                </div>
+
+                <!-- مخيمات صيفية -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/زيتون.jpg" alt="مخيمات صيفية للأطفال">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-tents"></i></div>
+                        <h3>مخيمات صيفية للأطفال</h3>
+                        <p>أقامت الجمعية مخيمات صيفية سنوية جمعت الأطفال في أنشطة ترفيهية وتعليمية وتراثية خلال العطلة
+                            الصيفية.</p>
+                    </div>
+                </div>
+
+                <!-- دعم الأسر الموسمي -->
+                <div class="project-card" data-cat="before">
+                    <div class="project-img">
+                        <img src="images/زيت.jpg" alt="دعم الأسر في المواسم والأعياد">
+                    </div>
+                    <div class="project-body">
+                        <div class="icon-badge"><i class="fa-solid fa-gift"></i></div>
+                        <h3>دعم الأسر في المواسم والأعياد</h3>
+                        <p>قدّمت الجمعية سلال غذائية وكسوة العيد للأسر المحتاجة بمناسبة الأعياد والمواسم، لتخفيف العبء
+                            عنها.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ملاحظة: المشاريع المضافة (الدعم النفسي، التعليم في النزوح، الإغاثة الشتوية، التدريب المهني،
+     ورشات الحرف، المخيمات الصيفية، دعم المواسم) هي أمثلة مقترحة بناءً على طبيعة عمل الجمعيات المماثلة.
+     عدّل النصوص والصور والأرقام لتطابق مشاريعكم الفعلية أو احذف ما لا ينطبق. -->
+
+    <!-- ============ التذييل ============ -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h4>جمعية العطاء</h4>
+                <p style="max-width:280px;">نعمل من أجل غزة، بكل ما تحمله الكلمة من معنى: عطاء إنساني، وتمسّك بالهوية
+                    والتراث.</p>
+            </div>
+            <div>
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="index.html#about">من نحن</a></li>
+                    <li><a href="index.html#team">أعضاء الجمعية</a></li>
+                    <li><a href="projects.html">مشاريعنا</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>تواصل معنا</h4>
+                <ul class="footer-contact">
+                    <li><i class="fa-solid fa-phone"></i> 000-000-0000</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@example.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> خانيونس، قطاع غزة</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 جمعية العطاء. جميع الحقوق محفوظة.</div>
+    </footer>
+
+    <button class="to-top" id="toTop" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        const header = document.getElementById('siteHeader');
+        const toTopBtn = document.getElementById('toTop');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+            toTopBtn.classList.toggle('show', window.scrollY > 400);
+        });
+        toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            navToggle.innerHTML = mainNav.classList.contains('open')
+                ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        // ===== فلترة المشاريع =====
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const groups = document.querySelectorAll('.projects-group');
+        const cards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                if (filter === 'all') {
+                    groups.forEach(g => g.style.display = 'block');
+                    cards.forEach(c => c.classList.remove('hidden-card'));
+                } else {
+                    groups.forEach(g => g.style.display = 'block');
+                    cards.forEach(c => {
+                        c.classList.toggle('hidden-card', c.dataset.cat !== filter);
+                    });
+                    // إخفاء عنوان المجموعة إن لم يتبقَّ فيها بطاقات ظاهرة
+                    groups.forEach(g => {
+                        const visible = g.querySelectorAll('.project-card:not(.hidden-card)').length;
+                        g.style.display = visible ? 'block' : 'none';
+                    });
+                }
+            });
+        });
+
+        // ===== حركات الظهور =====
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>

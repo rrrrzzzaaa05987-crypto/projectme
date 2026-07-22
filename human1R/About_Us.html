@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - جمعية التغريد للثقافة والتنمية</title>
+
+    <!-- خطوط جوجل المستخدمة في التصميم الأساسي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- ربط ملف الـ CSS الخاص بك -->
+    <link rel="stylesheet" href="css/style copy.css">
+
+    <!-- تنسيقات خاصة بصفحة من نحن لضمان الجمالية والتميز -->
+    <style>
+        .about-header-section {
+            margin-top: 78px;
+            background: linear-gradient(rgba(43, 33, 24, 0.4), rgba(43, 33, 24, 0.6)), url('images/انشطة.jpg') no-repeat center center/cover;
+            color: var(--cream);
+            text-align: center;
+            padding: 100px 6vw 80px;
+        }
+
+        .about-header-section h1 {
+            color: var(--cream);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 15px;
+        }
+
+        .about-header-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--sand);
+        }
+
+        /* قسم الرؤية والرسالة والأهداف */
+        .identity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .identity-card {
+            background: var(--sand-2);
+            padding: 35px 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .identity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .identity-card i {
+            font-size: 2.5rem;
+            color: var(--brick);
+            margin-bottom: 20px;
+        }
+
+        .identity-card h3 {
+            font-family: var(--font-body);
+            font-weight: 800;
+            color: var(--olive-dark);
+            margin-bottom: 15px;
+            font-size: 1.35rem;
+        }
+
+        .identity-card p {
+            font-size: 1rem;
+            color: var(--ink-soft);
+        }
+
+        /* قسم قصة التأسيس والتحدي (الخط الزمني المطور) */
+        .story-section {
+            background: var(--cream);
+            padding: 90px 6vw;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+            padding: 20px 0;
+        }
+
+        /* الخط العمودي الممتد */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            width: 3px;
+            background: var(--olive);
+            transform: translateX(50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        /* العناصر الفردية على اليمين واليسار */
+        .timeline-item.right {
+            right: 0;
+            text-align: right;
+        }
+
+        .timeline-item.left {
+            right: 50%;
+            text-align: right;
+        }
+
+        /* النقطة المركزية */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--sand);
+            border: 4px solid var(--brick);
+            border-radius: 50%;
+            top: 35px;
+            z-index: 1;
+        }
+
+        .timeline-item.right::after {
+            left: -9px;
+        }
+
+        .timeline-item.left::after {
+            right: -9px;
+        }
+
+        .timeline-content {
+            background: var(--sand-2);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--olive);
+            color: var(--cream);
+            font-weight: 700;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--olive-dark);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            font-size: 0.98rem;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        /* تحويل الخط الزمني ليعمل بشكل عمودي كامل ومناسب للهواتف */
+        @media (max-width: 768px) {
+            .timeline::before {
+                right: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-right: 60px;
+                padding-left: 0;
+            }
+
+            .timeline-item.left {
+                right: 0;
+            }
+
+            .timeline-item.right::after,
+            .timeline-item.left::after {
+                right: 21px;
+                left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ الهيدر ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="شعار الجمعية" class="logo-img">
+                <span class="logo-text">جمعية التغريد</span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="in1.html#home">الرئيسية</a></li>
+                <li><a href="About_Us.html" class="active">من نحن</a></li>
+                <li><a href="in1.html">أعضاؤنا</a></li>
+                <li><a href="pro.html">مشاريعنا</a></li>
+                <li><a href="in1.html#tenders">العطاءات والمناقصات</a></li>
+                <li><a href="jobs.html">الوظائف الشاغرة</a></li>
+                <li><a href="contact-us.html">اتصل بنا</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="in1.html#contact" class="btn-support">ساهم معنا الآن</a>
+                <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ واجهة الصفحة الرئيسية ============ -->
+    <section class="about-header-section" id="aboutHeader">
+        <h1 class="reveal in-view">حكايتنا وهويتنا</h1>
+        <p class="reveal in-view">نحن صوت التراث ونبض الإغاثة، انطلقنا من عمق المعاناة لنصنع فارقاً حقيقياً في حياة
+            مجتمعنا في قطاع غزة.</p>
+    </section>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ قسم الهوية والرسالة والأهداف ============ -->
+    <section class="identity-section">
+        <div class="section-head reveal in-view">
+            <span class="eyebrow">ثوابتنا</span>
+            <h2>الرؤية والرسالة والأهداف</h2>
+        </div>
+        <div class="identity-grid">
+            <div class="identity-card reveal in-view">
+                <i class="fa-solid fa-eye"></i>
+                <h3>رؤيتنا</h3>
+                <p>مجتمع فلسطيني متمسك بجذوره وتراثه الأصيل، وقادر على الصمود والنهوض والتكافل الاجتماعي حتى في أحلك
+                    الظروف الإنسانية.</p>
+            </div>
+            <div class="identity-card reveal in-view">
+                <i class="fa-solid fa-bullhorn"></i>
+                <h3>رسالتنا</h3>
+                <p>تمكين وتطوير المجتمع المحلي من خلال إحياء الفلكلور الشعبي ودعم الأطفال والشباب، مع الاستجابة الطارئة
+                    والكاملة لإغاثة النازحين والمتضررين وقت الأزمات والحروب.</p>
+            </div>
+            <div class="identity-card reveal in-view">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>أهدافنا</h3>
+                <p>حفظ الهوية الوطنية، احتضان الطفولة وتنمية مهاراتها، مد يد العون والمساعدة الغذائية والمائية
+                    والمجتمعية لكل بيت يحتاج المساندة على أرض غزة.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ قسم الخط الزمني: كيف تكونت وتحدت المعيقات ============ -->
+    <section class="story-section">
+        <div class="section-head reveal in-view">
+            <span class="eyebrow">مسيرتنا</span>
+            <h2>تاريخ الجمعية ومراحل التحدي</h2>
+            <p>كيف نشأت جمعية التغريد، ومن أين بدأت، وكيف خرجت من رحم تضييق ومعيقات الاحتلال لتصبح سنداً للأهالي.</p>
+        </div>
+
+        <div class="timeline">
+            <!-- محطة 1: التأسيس والنشأة -->
+            <div class="timeline-item right reveal in-view">
+                <div class="timeline-content">
+                    <span class="timeline-date">مرحلة الفكرة والتأسيس</span>
+                    <h3>كيف تكونت الجمعية؟</h3>
+                    <p>ولدت فكرة الجمعية من قبل مجموعة من الشباب والمثقفين الحريصين على الهوية الفلسطينية في قطاع غزة.
+                        تأسست الجمعية لتعمل كحاضنة ثقافية واجتماعية تسد الثغرات في التنمية المحلية وتوفر مساحة آمنة
+                        لتطوير مهارات الشباب والأطفال الفنية والتعليمية.</p>
+                </div>
+            </div>
+
+            <!-- محطة 2: أول مشروع للجمعية -->
+            <div class="timeline-item left reveal in-view">
+                <div class="timeline-content">
+                    <span class="timeline-date">أولى الخطوات والمشاريع</span>
+                    <h3>انطلاق الروضة والتراث الشعبي</h3>
+                    <p>بدأت الجمعية مسيرتها العملية الفاعلة بإطلاق **"مشروع روضة الأطفال وتأسيس فرقة الدبكة الشعبية"**.
+                        ركّز المشروع على احتضان أطفال الحي وتنشئتهم في بيئة تربوية هادفة، بالتوازي مع تدريب اليافعين على
+                        الفلكلور الفلسطيني لحماية الموروث التراثي من الاندثار والسرقة.</p>
+                </div>
+            </div>
+
+            <!-- محطة 3: مواجهة معيقات الاحتلال -->
+            <div class="timeline-item right reveal in-view">
+                <div class="timeline-content">
+                    <span class="timeline-date">تحدي الحصار والمعيقات</span>
+                    <h3>من وسط الحصار خرجنا واشتغلنا</h3>
+                    <p>واجهت الجمعية معيقات قاسية فرضها الاحتلال؛ من إغلاق للمعابر، ومنع دخول الأدوات والمستلزمات
+                        التعليمية والتراثية، وتدمير البنى التحتية المتكرر، وانقطاع التمويل الخارجي. لكن بالإرادة المحلية
+                        والتطوع الصلب، طوّرت الجمعية بدائل ذاتية واستمرت في تقديم خدماتها وتوسيع رقعة عملها رغم كيد
+                        الحصار.</p>
+                </div>
+            </div>
+
+            <!-- محطة 4: التحول خلال الحرب الحالية -->
+            <div class="timeline-item left reveal in-view">
+                <div class="timeline-content">
+                    <span class="timeline-date">العمل الإنساني الطارئ 2024 - 2026</span>
+                    <h3>الاستجابة لعدوان قطاع غزة</h3>
+                    <p>مع اشتداد وتصاعد العدوان على قطاع غزة، حوّلت الجمعية كامل طاقتها ومقدراتها فوراً لميدان الإغاثة
+                        الإنسانية. بالرغم من استهداف المقرات والنزوح، انطلقت فرقنا الميدانية لتأسيس تكايا الطعام، توزيع
+                        الطرود الغذائية، وتأمين آلاف اللترات من مياه الشرب للنازحين في مواصي خان يونس والمناطق المجاورة،
+                        لنثبت أن التغريد يبقى صادحاً بالخير والتحدي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ الفوتر ============ -->
+    <footer>
+        <span class="logo-text">جمعية التغريد</span>
+        <p>© 2026 جمعية التغريد للثقافة والتنمية - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- جافا سكريبت لتفعيل قائمة الجوال -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+
+</html>

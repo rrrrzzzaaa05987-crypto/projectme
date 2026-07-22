@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - جمعية التغريد للثقافة والتنمية</title>
+
+    <!-- خطوط جوجل المستخدمة في التصميم الأساسي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- ربط ملف الـ CSS الخاص بك -->
+    <link rel="stylesheet" href="css/style copy.css">
+
+    <!-- تنسيقات خاصة بصفحة اتصل بنا لضمان الجمالية والتناسق الكامل -->
+    <style>
+        .contact-page-intro {
+            margin-top: 78px;
+            background: linear-gradient(to bottom, var(--sand), var(--sand-2));
+            text-align: center;
+            padding: 60px 6vw 40px;
+        }
+
+        .contact-page-container {
+            background: var(--sand);
+            padding: 40px 6vw 90px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .contact-main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* بطاقات معلومات الاتصال الجانبية */
+        .contact-info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-right: 5px solid var(--olive);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateX(-5px);
+        }
+
+        .info-card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(63, 87, 50, 0.1);
+            color: var(--olive);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-card-detail h3 {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--olive-dark);
+            margin-bottom: 4px;
+        }
+
+        .info-card-detail p {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            direction: ltr;
+            text-align: right;
+        }
+
+        /* شبكات التواصل الاجتماعي داخل الجانب البصري */
+        .social-box {
+            background: var(--olive-dark);
+            color: var(--cream);
+            border-radius: var(--radius);
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .social-box h3 {
+            color: var(--cream);
+            font-family: var(--font-body);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .social-box-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-box-links a {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .social-box-links a:hover {
+            background: var(--rust);
+            transform: translateY(-3px);
+        }
+
+        /* قسم فورم المراسلة */
+        .message-form-wrap {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--brick);
+        }
+
+        .message-form-wrap h3 {
+            font-family: var(--font-body);
+            font-weight: 800;
+            color: var(--olive-dark);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--olive-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--sand-2);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--olive);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .btn-send-message {
+            width: 100%;
+            background: var(--rust);
+            color: var(--cream);
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+
+        .btn-send-message:hover {
+            background: var(--rust-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ الهيدر ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="شعار الجمعية" class="logo-img">
+                <span class="logo-text">جمعية التغريد</span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="in1.html#home">الرئيسية</a></li>
+                <li><a href="About_Us.html">من نحن</a></li>
+                <li><a href="in1.html#team">أعضاؤنا</a></li>
+                <li><a href="index.html#projects">مشاريعنا</a></li>
+                <li><a href="in1.html#tenders">العطاءات والمناقصات</a></li>
+                <li><a href="jobs.html">الوظائف الشاغرة</a></li>
+                <li><a href="contact-us.html" class="active">اتصل بنا</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="#contactMain" class="btn-support">ساهم معنا الآن</a>
+                <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ مقدمة الصفحة ============ -->
+    <section class="contact-page-intro" id="contactIntro">
+        <div class="section-head reveal in-view">
+            <span class="eyebrow">تواصل مباشر</span>
+            <h2>اتصل بنا</h2>
+            <p>يسعدنا تواصلكم معنا دائماً. سواء كان لديك استفسار، اقتراح، أو ترغب في دعم مشاريعنا الخيرية والإغاثية على
+                الأرض في قطاع غزة.</p>
+        </div>
+    </section>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ محتوى صفحة الاتصال الرئيسي ============ -->
+    <section class="contact-page-container" id="contactMain">
+        <div class="contact-main-grid">
+
+            <!-- العمود الأول: معلومات التواصل والشبكات الاجتماعية -->
+            <div class="contact-info-sidebar reveal in-view">
+
+                <!-- بطاقة الهاتف -->
+                <div class="info-card">
+                    <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-card-detail">
+                        <h3>رقم الهاتف / الاتصال</h3>
+                        <p>+970 599 000 000</p>
+                    </div>
+                </div>
+
+                <!-- بطاقة البريد الإلكتروني -->
+                <div class="info-card">
+                    <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="info-card-detail">
+                        <h3>البريد الإلكتروني</h3>
+                        <p style="direction: ltr;">info@altaghreed.org</p>
+                    </div>
+                </div>
+
+                <!-- بطاقة العنوان -->
+                <div class="info-card" style="border-right-color: var(--brick);">
+                    <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="info-card-detail">
+                        <h3>العنوان الميداني الحالي</h3>
+                        <p style="direction: rtl;">قطاع غزة - مواصي خان يونس والمناطق المجاورة</p>
+                    </div>
+                </div>
+
+                <!-- صندوق شبكات التواصل الاجتماعي -->
+                <div class="social-box">
+                    <h3>تابعنا على منصاتنا</h3>
+                    <p>كن قريباً من مشاريعنا اليومية وتغطياتنا الميدانية</p>
+                    <div class="social-box-links">
+                        <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- العمود الثاني: نموذج إرسال الرسائل واجهة المراسلة -->
+            <div class="message-form-wrap reveal in-view">
+                <h3>أرسل لنا رسالة مباشرة</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="senderName">الاسم الكامل</label>
+                        <input type="text" id="senderName" class="form-control" placeholder="أدخل اسمك الكريم" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senderEmail">البريد الإلكتروني</label>
+                        <input type="email" id="senderEmail" class="form-control" placeholder="name@example.com"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="msgSubject">عنوان الموضوع</label>
+                        <input type="text" id="msgSubject" class="form-control"
+                            placeholder="مثال: استفسار عن مشروع إغاثي، دعم وتبرع" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="messageBody">نص الرسالة</label>
+                        <textarea id="messageBody" class="form-control" placeholder="اكتب تفاصيل رسالتك هنا..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-send-message">إرسال الرسالة الآن</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ الفوتر ============ -->
+    <footer>
+        <span class="logo-text">جمعية التغريد</span>
+        <p>© 2026 جمعية التغريد للثقافة والتنمية - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- جافا سكريبت لتفعيل قائمة الجوال المتجاوبة -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+
+</html>

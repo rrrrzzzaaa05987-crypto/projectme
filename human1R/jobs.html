@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوظائف الشاغرة - جمعية التغريد للثقافة والتنمية</title>
+
+    <!-- خطوط جوجل المستخدمة في التصميم الأساسي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- ربط ملف الـ CSS الخاص بك -->
+    <link rel="stylesheet" href="css/style copy.css">
+
+    <!-- استايل إضافي متناسق وخاص بصفحة الوظائف فقط لتجنب تعديل الملف الأساسي -->
+    <style>
+        .vacancies-intro {
+            margin-top: 78px;
+            background: linear-gradient(to bottom, var(--sand), var(--sand-2));
+            text-align: center;
+            padding: 60px 6vw 40px;
+        }
+
+        .jobs-container {
+            background: var(--sand);
+            padding: 40px 6vw 90px;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--olive);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .job-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(63, 87, 50, 0.1);
+            color: var(--olive);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .job-title h3 {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--olive-dark);
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .meta-tag {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .tag-exp {
+            background: rgba(184, 92, 56, 0.1);
+            color: var(--rust-dark);
+        }
+
+        .tag-type {
+            background: rgba(63, 87, 50, 0.1);
+            color: var(--olive-dark);
+        }
+
+        .job-details {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            margin-bottom: 20px;
+        }
+
+        .job-details ul {
+            list-style: disc;
+            margin-right: 20px;
+            margin-top: 8px;
+        }
+
+        .job-details li {
+            margin-bottom: 5px;
+        }
+
+        .btn-apply-job {
+            display: inline-block;
+            text-align: center;
+            background: var(--olive);
+            color: var(--cream);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.25s;
+        }
+
+        .btn-apply-job:hover {
+            background: var(--rust);
+        }
+
+        /* قسم فورم التقديم */
+        .application-section {
+            background: var(--sand-2);
+            padding: 80px 6vw;
+        }
+
+        .form-wrap {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--cream);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--olive-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--sand-2);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--olive);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--rust);
+            color: var(--cream);
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background 0.25s;
+        }
+
+        .btn-submit:hover {
+            background: var(--rust-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ الهيدر ============ -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="شعار الجمعية" class="logo-img">
+                <span class="logo-text">جمعية التغريد</span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="in1.html#home">الرئيسية</a></li>
+                <li><a href="About_Us.html">من نحن</a></li>
+                <li><a href="in1.html#team">أعضاؤنا</a></li>
+                <li><a href="jobs.html">مشاريعنا</a></li>
+                <li><a href="in1.html#tenders">العطاءات والمناقصات</a></li>
+                <li><a href="jobs.html" class="active">الوظائف الشاغرة</a></li>
+                <li><a href="contact-us.html">اتصل بنا</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="index.html#contact" class="btn-support">ساهم معنا الآن</a>
+                <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ مقدمة الصفحة ============ -->
+    <section class="vacancies-intro">
+        <div class="section-head reveal in-view">
+            <span class="eyebrow">انضم إلى فريقنا</span>
+            <h2>الوظائف الشاغرة</h2>
+            <p>تبحث جمعية التغريد للثقافة والتنمية عن كفاءات وطنية طموحة للانضمام إلى فريق العمل والمساهمة في خدمة أهلنا
+                في قطاع غزة وتطوير برامجنا الثقافية والإغاثية.</p>
+        </div>
+    </section>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ قائمة الوظائف الشاغرة ============ -->
+    <section class="jobs-container">
+        <div class="jobs-grid">
+
+            <!-- الوظيفة 1: محاسب -->
+            <div class="job-card reveal in-view">
+                <div>
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="job-title">
+                            <h3>مطلوب محاسب / محاسبة</h3>
+                        </div>
+                    </div>
+                    <div class="job-meta">
+                        <span class="meta-tag tag-exp"><i class="fa-solid fa-briefcase"></i> خبرة لا تقل عن 3
+                            سنوات</span>
+                        <span class="meta-tag tag-type"><i class="fa-solid fa-clock"></i> دوام كامل</span>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>المهام المطلوبة:</strong> إدارة الحسابات المالية للجمعية، إعداد التقارير الدورية
+                            للممولين، ومتابعة الصرف والميزانيات للمشاريع الإغاثية والتنموية.</p>
+                        <ul>
+                            <li>شهادة بكالوريوس في المحاسبة أو التمويل.</li>
+                            <li>إجادة العمل على البرامج المحاسبية والـ Excel الاحترافي.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#applyForm" class="btn-apply-job" onclick="setJobTitle('محاسب / محاسبة')">تقدم للوظيفة</a>
+            </div>
+
+            <!-- الوظيفة 2: مديرة روضة -->
+            <div class="job-card reveal in-view" style="border-top-color: var(--brick);">
+                <div>
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="job-title">
+                            <h3>مطلوب مديرة لروضة الأطفال</h3>
+                        </div>
+                    </div>
+                    <div class="job-meta">
+                        <span class="meta-tag tag-exp"><i class="fa-solid fa-briefcase"></i> خبرة لا تقل عن 5
+                            سنوات</span>
+                        <span class="meta-tag tag-type"><i class="fa-solid fa-clock"></i> دوام كامل</span>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>المهام المطلوبة:</strong> الإشراف الإداري والتربوي الكامل على الروضة، متابعة أداء
+                            المربيات، وتطوير الخطط والمناهج التعليمية والأنشطة اللامنهجية للأطفال.</p>
+                        <ul>
+                            <li>درجة البكالوريوس في التربية الأساسية أو رياض الأطفال.</li>
+                            <li>مهارات عالية في القيادة والتواصل مع أولياء الأمور.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#applyForm" class="btn-apply-job" onclick="setJobTitle('مديرة روضة الأطفال')">تقدم للوظيفة</a>
+            </div>
+
+            <!-- الوظيفة 3: أخصائي خدمة اجتماعية -->
+            <div class="job-card reveal in-view">
+                <div>
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <div class="job-title">
+                            <h3>مطلوب أخصائي/ة خدمة اجتماعية</h3>
+                        </div>
+                    </div>
+                    <div class="job-meta">
+                        <span class="meta-tag tag-exp"><i class="fa-solid fa-briefcase"></i> خبرة لا تقل عن سنتين</span>
+                        <span class="meta-tag tag-type"><i class="fa-solid fa-clock"></i> دوام كامل / ميداني</span>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>المهام المطلوبة:</strong> تقييم احتياجات العائلات النازحة والمتضررة، الإشراف على
+                            حملات التوزيع الإغاثي، وتنسيق المساعدات الإنسانية ميدانياً.</p>
+                        <ul>
+                            <li>شهادة في علم الاجتماع أو الخدمة الاجتماعية.</li>
+                            <li>القدرة على العمل تحت الضغط والتعامل مع الحالات الإنسانية المعقدة.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#applyForm" class="btn-apply-job" onclick="setJobTitle('أخصائي خدمة اجتماعية')">تقدم
+                    للوظيفة</a>
+            </div>
+
+            <!-- الوظيفة 4: مرشد نفسي -->
+            <div class="job-card reveal in-view" style="border-top-color: var(--brick);">
+                <div>
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div class="job-title">
+                            <h3>مطلوب مرشد / أخصائي نفسي</h3>
+                        </div>
+                    </div>
+                    <div class="job-meta">
+                        <span class="meta-tag tag-exp"><i class="fa-solid fa-briefcase"></i> خبرة لا تقل عن 3
+                            سنوات</span>
+                        <span class="meta-tag tag-type"><i class="fa-solid fa-clock"></i> دوام جزئي</span>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>المهام المطلوبة:</strong> تقديم الدعم النفسي والاجتماعي الأولي للأطفال والنساء
+                            المتضررين من الحرب، وتنفيذ جلسات تفريغ نفسي وأنشطة ترفيهية هادفة.</p>
+                        <ul>
+                            <li>درجة البكالوريوس في علم النفس أو الإرشاد التربوي ونفسي.</li>
+                            <li>خبرة سابقة في التعامل مع الصدمات والأزمات لدى الأطفال.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#applyForm" class="btn-apply-job" onclick="setJobTitle('مرشد نفسي')">تقدم للوظيفة</a>
+            </div>
+
+            <!-- الوظيفة 5: معلم دبكة وتراث -->
+            <div class="job-card reveal in-view">
+                <div>
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fa-solid fa-music"></i></div>
+                        <div class="job-title">
+                            <h3>مطلوب مدرب / معلم دبكة شعبية</h3>
+                        </div>
+                    </div>
+                    <div class="job-meta">
+                        <span class="meta-tag tag-exp"><i class="fa-solid fa-briefcase"></i> خبرة عملية مثبتة</span>
+                        <span class="meta-tag tag-type"><i class="fa-solid fa-clock"></i> نظام العقود / الأنشطة</span>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>المهام المطلوبة:</strong> تدريب فرق الأطفال والشباب التابعة للجمعية على فنون الدبكة
+                            الفلسطينية والفلكلور الشعبي، وإعداد العروض التراثية للفعاليات الوطنية.</p>
+                        <ul>
+                            <li>شغف ومعرفة واسعة بالتراث الشعبي الفلسطيني.</li>
+                            <li>مهارة عالية في تدريب وتوجيه المجموعات والفرق الاستعراضية.</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#applyForm" class="btn-apply-job" onclick="setJobTitle('معلم دبكة وتراث')">تقدم للوظيفة</a>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="tatreez-divider"></div>
+
+    <!-- ============ قسم فورم تقديم الطلب ============ -->
+    <section class="application-section" id="applyForm">
+        <div class="section-head reveal in-view">
+            <h2>نموذج طلب التوظيف</h2>
+            <p>برجاء تعبئة البيانات التالية بدقة، وسيتم التواصل مع المرشحين المستوفين للشروط المقابلة.</p>
+        </div>
+
+        <div class="form-wrap reveal in-view">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="jobSelect">الوظيفة المطلوبة</label>
+                    <select id="jobSelect" class="form-control" required>
+                        <option value="">-- اختر الوظيفة المناسبة لتخصصك --</option>
+                        <option value="محاسب / محاسبة">محاسب / محاسبة</option>
+                        <option value="مديرة روضة الأطفال">مديرة لروضة الأطفال</option>
+                        <option value="أخصائي خدمة اجتماعية">أخصائي/ة خدمة اجتماعية</option>
+                        <option value="مرشد نفسي">مرشد / أخصائي نفسي</option>
+                        <option value="معلم دبكة وتراث">مدرب / معلم دبكة شعبية</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">الاسم رباعي</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="أدخل اسمك الكامل" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNum">رقم الجوال / واتساب</label>
+                    <input type="tel" id="phoneNum" class="form-control" placeholder="059xxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienceYears">عدد سنوات الخبرة</label>
+                    <input type="number" id="experienceYears" class="form-control" min="0" max="30"
+                        placeholder="مثال: 3" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvLink">رابط السيرة الذاتية (Google Drive / Dropbox)</label>
+                    <input type="url" id="cvLink" class="form-control" placeholder="https://drive.google.com/..."
+                        required>
+                </div>
+
+                <button type="submit" class="btn-submit">إرسال الطلب الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ الفوتر ============ -->
+    <footer>
+        <span class="logo-text">جمعية التغريد</span>
+        <p>© 2026 جمعية التغريد للثقافة والتنمية - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- جافا سكريبت بسيطة لتسهيل اختيار الوظيفة تلقائياً عند الضغط على زر التقديم الخاص ببطاقة معينة -->
+    <script>
+        function setJobTitle(jobName) {
+            document.getElementById('jobSelect').value = jobName;
+        }
+
+        // كود لتشغيل القائمة على الهواتف الذكية متوافق مع ملف الـ script.js الخاص بك
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+
+</html>
