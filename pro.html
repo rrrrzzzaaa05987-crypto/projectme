@@ -113,6 +113,22 @@
             white-space: nowrap;
         }
 
+        .logo-img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--cream);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+
         .brand .brand-mark {
             width: 38px;
             height: 38px;
@@ -529,8 +545,11 @@
     <!-- ============ الهيدر ============ -->
     <header class="site-header" id="siteHeader">
         <div class="brand">
-            <span class="brand-mark"><i class="fa-solid fa-hand-holding-heart"></i></span>
-            <span>جمعية التغريد</span>
+            <!-- <span class="brand-mark"><i class="fa-solid fa-hand-holding-heart"></i></span> -->
+            <!-- شعار الجمعية -->
+            <a href="index.html"><img src="images/logo.jpg" alt="شعار الجمعية" class="logo-img"></a>
+            <span class="logo-text">جمعية التغريد</span>
+
         </div>
 
         <nav class="main-nav" id="mainNav">
@@ -756,15 +775,12 @@
 
     </section>
 
-    <!-- ملاحظة: المشاريع المضافة (الدعم النفسي، التعليم في النزوح، الإغاثة الشتوية، التدريب المهني،
-     ورشات الحرف، المخيمات الصيفية، دعم المواسم) هي أمثلة مقترحة بناءً على طبيعة عمل الجمعيات المماثلة.
-     عدّل النصوص والصور والأرقام لتطابق مشاريعكم الفعلية أو احذف ما لا ينطبق. -->
 
     <!-- ============ التذييل ============ -->
     <footer id="contact">
         <div class="footer-grid">
             <div>
-                <h4>جمعية العطاء</h4>
+                <h4>جمعية التغريد</h4>
                 <p style="max-width:280px;">نعمل من أجل غزة، بكل ما تحمله الكلمة من معنى: عطاء إنساني، وتمسّك بالهوية
                     والتراث.</p>
             </div>
@@ -773,7 +789,7 @@
                 <ul>
                     <li><a href="index.html#about">من نحن</a></li>
                     <li><a href="index.html#team">أعضاء الجمعية</a></li>
-                    <li><a href="projects.html">مشاريعنا</a></li>
+                    <li><a href="pro.html">مشاريعنا</a></li>
                 </ul>
             </div>
             <div>
@@ -781,11 +797,11 @@
                 <ul class="footer-contact">
                     <li><i class="fa-solid fa-phone"></i> 000-000-0000</li>
                     <li><i class="fa-solid fa-envelope"></i> info@example.com</li>
-                    <li><i class="fa-solid fa-location-dot"></i> خانيونس، قطاع غزة</li>
+                    <li><i class="fa-solid fa-location-dot"></i> بيت حانون قطاع غزة</li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">© 2026 جمعية العطاء. جميع الحقوق محفوظة.</div>
+        <div class="footer-bottom">© 2026 جمعية التغريد . جميع الحقوق محفوظة.</div>
     </footer>
 
     <button class="to-top" id="toTop" aria-label="العودة للأعلى">
